@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Are you sure you want to execute script with parameters: "
+read -n 1 -p "fileName and filterString (y/[a]): " AMSURE
+echo ""
+[ "$AMSURE" = "y" ] || exit
+echo "working"
+
+awk '{if(sub(/hello/, "HELLO")){print}}' example > result
+
+awk 'BEGIN{FS="\n"; RS=""; ORS="\n\n"} /hello/' example > newRes
