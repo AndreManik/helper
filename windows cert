@@ -32,3 +32,29 @@ https://habr.com/post/96827/ — применить клиентский сер�
 https://www.ibm.com/developerworks/ru/library/l-cerfiticate_management_01/index.html?ca=drs- 
 
 https://sgolubev.ru/openssl-ca/
+
+-=======================================-
+#Создаешь CA:
+openssl genrsa -aes256 -out yourawesomeCA.key 4096
+openssl req -x509 -new -nodes -key yourawesomeCA.key -out yourawesomeCA.pem -days 3650
+
+#RSA (серьезно 2048?, ну окей):
+openssl genrsa -aes256 -out secretlorclub.key 2048
+openssl req -new -key secretlorclub.key -out secretlorclub.csr
+cp secretlorclub.key secretlorclub.key.org; openssl rsa -in secretlorclub.key.org -out secretlorclub.key
+Подписываешь:
+openssl x509 -req -days 666 -in secretlorclub.csr -CA yourawesomeCA.pem -CAkey yourawesomeCA.key -set_serial yourawesomeserial -out secretlorclub.crt
+
+#ECDSA:
+openssl ecparam -genkey -name secp384r1 | openssl ec -out secretlorclubecdsa.key -aes256
+openssl req -new -sha256 -key secretlorclubecdsa.key -out secretlorclubecdsa.csr -config fastuser.cnf
+cp secretlorclubecdsa.key secretlorclubecdsa.key.org; openssl ec -in secretlorclubecdsa.key.org -out secretlorclubecdsa.key
+Подписываешь:
+openssl x509 -req -days 666 -in secretlorclubecdsa.csr -CA yourawesomeCA.pem -CAkey yourawesomeCA.key -set_serial yourawesomeserial -out secretlorclubecdsa.crt
+
+#Без паролей:
+#RSA:
+openssl genrsa > secretlorclub.key 2048
+#ECDSA:
+openssl ecparam -genkey -name secp384r1 > secretlorclubecdsa.key
+-=================================================-
