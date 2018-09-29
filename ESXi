@@ -4,3 +4,12 @@
 4. https://www.youtube.com/watch?v=98ii7aKXZKE
 5. http://www.vmstart.ru/tso-kalkulyator/220-esxi
 RTL8169/8110
+
+best tutorial
+https://www.v-front.de/2015/03/vsphere-6-is-ga-ultimate-guide-to.html
+https://www.powershellgallery.com/packages/VMware.PowerCLI/10.2.0.9372002
+https://vibsdepot.v-front.de/wiki/index.php/List_of_currently_available_ESXi_packages
+https://www.v-front.de/p/esxi-customizer.html#download
+!!!!!-----https://www.v-front.de/p/esxi-customizer-ps.html-------!!!!!!!
+http://tritoneco.com/2014/02/21/fix-for-powershell-script-not-digitally-signed/ - powerShell
+        Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
