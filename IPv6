@@ -59,3 +59,15 @@ https://www.e2enetworks.com/help/knowledge-base/how-to-enable-ipv6-on-your-cento
 
 tcpdump
 https://www.youtube.com/watch?v=bCx1eqAetqE
+
+delete from mydb.categories;
+insert into mydb.categories values(104, 'NAME', 'remarks');
+insert into mydb.categories values(103, 'NAME', 'remarks');
+insert into mydb.categories values(102, 'NAME', 'remarks');
+insert into mydb.categories values(101, 'NAME', 'remarks');
+#create database if not exists mydb;
+drop table mydb.cat;
+create table if not exists mydb.cat (id int, name VARCHAR(20), rem varchar(500), ip varchar(40));
+insert into mydb.cat (id, rem) SELECT category_id, category_name  FROM mydb.categories;
+update mydb.cat set ip='<h1>hello</h1>' where id='104';
+select * from mydb.cat;
